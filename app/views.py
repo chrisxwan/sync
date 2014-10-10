@@ -11,6 +11,7 @@ from app import forms
 @myapp.route('/')
 def front():
 	form = SignInForm()
+	form.email.placeholder = "Email"
 	return render_template('front.html', form=form)
     
 @myapp.route('/new', methods=['GET', 'POST'])
