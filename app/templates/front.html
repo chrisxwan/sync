@@ -1,15 +1,26 @@
 {% extends "base.html" %}
+{% from "_formhelpers.html" import render_field, render_remember %}
 {% import "bootstrap/wtf.html" as wtf %}
+
 
 {% block title %}Sync{% endblock %}
 {% block page_content %}
 <h1 class="front">SYNC</h1>
 <p class="front">The Hackathon Network</p>
-<div id = "login-wrapper">
-	<div class="col-md-3">
-		{{wtf.quick_form(form) }}
+<div class="col-md-4 col-md-offset-4" id = "login-wrapper">
+	
+		<h3>LOG IN</h3>
+		<form method="post" action = "/sign_in" id="login" style="opacity: 1;">
+			<dl>
+				{{ render_field(form.email, placeholder="Email", class="form-control")}}
+				{{ render_field(form.password, placeholder="Password", class="form-control")}}
+				{{ render_field(form.submit, class="btn btn-default")}}
+			</dl>
+		</form>
 		<a href="{{ url_for('new') }}" class = "btn btn-large btn-primary"> New User </a>
-	</div>
+		<br></br>
+	
 </div>
+
 	
 {% endblock %}
